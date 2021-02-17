@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Month;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +19,7 @@ public class BankTransactionAnalyzerSimple {
         final Path path = Paths.get(RESOURCES + fileName);
         final List<String> lines = Files.readAllLines(path);
 
-        List<BankTransaction> bankTransactions = parser.parseLinesFromCSV(lines);
+        List<BankTransaction> bankTransactions = parser.parseLinesFrom(lines);
 
         System.out.println("The total for all transactions is " + calculateTotalAmount(bankTransactions));
         System.out.println("Transactions in January " + selectInMonth(bankTransactions, Month.JANUARY));
