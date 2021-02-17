@@ -26,7 +26,7 @@ public class BankTransactionAnalyzerSimple {
         System.out.println("Transactions in January " + selectInMonth(bankTransactions, Month.JANUARY));
     }
 
-    private static Double calculateTotalAmount(List<BankTransaction> bankTransactions) {
+    private static double calculateTotalAmount(List<BankTransaction> bankTransactions) {
         return bankTransactions.stream()
             .mapToDouble(BankTransaction::getAmount)
             .sum();
