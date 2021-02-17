@@ -5,7 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BankTransactionAnalyzerSimple {
 
@@ -30,13 +32,9 @@ public class BankTransactionAnalyzerSimple {
             .sum();
     }
 
-    private static Double selectInMonth(List<BankTransaction> bankTransactions, Month january) {
-        double total = 0d;
-        for (BankTransaction bankTransaction : bankTransactions) {
-            if (bankTransaction.getDate().getMonth() == january) {
-                total += bankTransaction.getAmount();
-            }
-        }
-        return total;
+    private static List<BankTransaction> selectInMonth(List<BankTransaction> bankTransactions, Month january) {
+        return bankTransactions.stream()
+            .filter(o -> o.getDate().getMonth() == january)
+            .collect(Collectors.toList());
     }
 }
