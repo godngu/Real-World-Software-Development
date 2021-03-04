@@ -1,6 +1,7 @@
 package com.example.book.chapter05;
 
 @FunctionalInterface
-public interface Action {
-    void execute(Facts facts);
+public interface Rule {
+
+    void perform(Facts facts);
 }
